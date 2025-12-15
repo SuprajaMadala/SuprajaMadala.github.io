@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Supraja Madala | Data Scientist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #0b1020;
+      --card-color: #161b2e;
+      --accent: #18c29c;
+      --text-main: #f4f6fb;
+      --text-muted: #a3a7c0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top left, #171c33, #050814);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 8, 20, 0.85);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left span {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .nav-right a {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .nav-right a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section-title span {
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 2.2fr 1.2fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: 2.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h2 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      padding: 0.55rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #18c29c, #35a3ff);
+      color: #050814;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      background: transparent;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top, #222844, #0c1020);
+      border-radius: 18px;
+      padding: 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-meta {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta div {
+      margin-bottom: 0.2rem;
+    }
+
+    /* Cards & grids */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: var(--card-color);
+      border-radius: 14px;
+      padding: 1.2rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .tag-row {
+      margin: 0.4rem 0 0.7rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+    }
+
+    .metric {
+      font-size: 0.78rem;
+      color: #cde4ff;
+    }
+
+    .pill-link {
+      font-size: 0.78rem;
+      margin-top: 0.3rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: var(--accent);
+    }
+
+    /* Two-column sections */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.2fr);
+      gap: 1.8rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.1rem;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .timeline-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Skills */
+    .skill-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .skill-group h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-muted);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-item span {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .contact-item a {
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0 0.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 780px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-right {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <span>SUPRAJA MADALA</span>
+      </div>
+      <nav class="nav-right">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div>
+        <h1>Data Scientist specializing in AI, NLP & RAG systems.</h1>
+        <h2>Building intelligent, production-ready ML solutions.</h2>
+        <p>
+          Data Scientist with expertise in large language models, RAG architectures, deep learning,
+          and predictive analytics. Experienced in end-to-end ML pipelines, data engineering, and
+          deploying scalable intelligence for real-world operations.
+        </p>
+
+        <div class="hero-buttons">
+          <!-- Download Resume (put your PDF in same folder with this name) -->
+          <a class="btn-primary" href="Supraja_Madala_Resume.pdf" download>
+            Download Resume ↓
+          </a>
+
+          <!-- Scroll to Projects -->
+          <a class="btn-ghost" href="#projects">View Projects →</a>
+
+          <!-- Scroll to Connect section -->
+          <a class="btn-ghost" href="#contact">
+            Connect with Me
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Quick snapshot</h3>
+        <p>M.S. Data Science @ University of New Haven (CGPA 4.0/4.0).</p>
+        <p>Hands-on with LLMs, computer vision, streaming data, and real-time analytics.</p>
+        <div class="hero-meta">
+          <div>📍 New Haven, CT</div>
+          <div>📧 <a href="mailto:Supraja2224@gmail.com">Supraja2224@gmail.com</a></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-title"><span>◆</span>Featured Projects</h2>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Advertisement Recommendation System</h3>
+          <p>
+            Built ensemble models to recommend personalized ads, improving targeting accuracy and
+            engagement prediction while keeping inference fast and efficient.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">Gradient Boosting</span>
+            <span class="tag">Random Forest</span>
+          </div>
+          <div class="metric">• 99% accuracy, +35% targeting accuracy, +42% engagement prediction</div>
+          <a class="pill-link" href="#" target="_blank">View code →</a>
+        </article>
+
+        <article class="card">
+          <h3>Brain Tumor Detection (CNN)</h3>
+          <p>
+            Developed CNN-based MRI classifier with augmentation and refinement to reduce false
+            negatives and support early glioma detection.
+          </p>
+          <div class="tag-row">
+            <span class="tag">CNN</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Medical Imaging</span>
+          </div>
+          <div class="metric">• 92% classification accuracy, -18% false negatives</div>
+          <a class="pill-link" href="#" target="_blank">Project details →</a>
+        </article>
+
+        <article class="card">
+          <h3>Job Market Analysis Pipeline</h3>
+          <p>
+            Automated ETL to scrape and analyze 20,000+ job postings daily, surfacing hiring trends
+            and skills demand across all U.S. states.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Airflow</span>
+            <span class="tag">AWS S3</span>
+            <span class="tag">ETL</span>
+            <span class="tag">Dashboards</span>
+          </div>
+          <div class="metric">• Improved workforce planning visibility across 50 states</div>
+          <a class="pill-link" href="#" target="_blank">View dashboard →</a>
+        </article>
+
+        <article class="card">
+          <h3>OCR Text Extraction System</h3>
+          <p>
+            Combined OpenCV and CNNs with a custom preprocessing pipeline to robustly extract text
+            from noisy, low-quality images.
+          </p>
+          <div class="tag-row">
+            <span class="tag">OpenCV</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">OCR</span>
+          </div>
+          <div class="metric">• +27% text extraction accuracy, -40% noise impact</div>
+        </article>
+
+        <article class="card">
+          <h3>KAVI Voice Assistant</h3>
+          <p>
+            Voice-driven assistant using NLP and speech processing to answer multi-category user
+            queries with improved recognition accuracy.
+          </p>
+          <div class="tag-row">
+            <span class="tag">NLP</span>
+            <span class="tag">Speech Recognition</span>
+            <span class="tag">Python</span>
+          </div>
+          <div class="metric">• -30% speech recognition error rate</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE + EDUCATION -->
+    <section id="experience">
+      <h2 class="section-title"><span>◆</span>Experience & Education</h2>
+      <div class="two-col">
+        <div>
+          <div class="timeline-item">
+            <div class="timeline-title">Data Scientist · Sperry Rail, CT</div>
+            <div class="timeline-meta">Aug 2025 – Present</div>
+            <div class="timeline-desc">
+              Training Elmer-based ML models for vision and sensor streams, building deep-learning
+              pipelines for defect detection, and integrating outputs into predictive maintenance
+              workflows.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Research Assistant · University of New Haven</div>
+            <div class="timeline-meta">Jan 2024 – Present</div>
+            <div class="timeline-desc">
+              Designed a Risk Assessment & Guidance (RAG) system with Llama for construction
+              inspections, enabling real-time risk analysis and auto-generated inspection reports.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Data Engineer · Larsen & Toubro, Hyderabad</div>
+            <div class="timeline-meta">Jan 2023 – Jan 2024</div>
+            <div class="timeline-desc">
+              Built predictive crew scheduling models, automated ETL and feature pipelines, and
+              developed Kafka-based real-time analytics for metro operations.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="timeline-item">
+            <div class="timeline-title">M.S. Data Science</div>
+            <div class="timeline-meta">University of New Haven · Dec 2025</div>
+            <div class="timeline-desc">
+              CGPA: 4.0 / 4.0. Focus on AI/ML, deep learning, NLP, and scalable data systems.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">B.Tech Computer Science & Engineering</div>
+            <div class="timeline-meta">St. Peter’s Engineering College · May 2023</div>
+            <div class="timeline-desc">
+              First Class with Distinction. Strong foundation in algorithms, software engineering,
+              and databases.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-title">Leadership & Communities</div>
+            <div class="timeline-desc">
+              President – Girls Who Code (UNH), Associate Marketing Lead – Entrepreneur Club, Vice
+              President – E-cell CSE, Radio Jockey & President – Radio Club, Member – Indian Student
+              Council.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2 class="section-title"><span>◆</span>Skills</h2>
+      <div class="two-col">
+        <div>
+          <div class="skill-group">
+            <h4>AI / ML</h4>
+            <div class="skill-chips">
+              <span class="chip">TensorFlow</span>
+              <span class="chip">PyTorch</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">XGBoost</span>
+              <span class="chip">CNNs</span>
+              <span class="chip">NLP</span>
+              <span class="chip">Computer Vision</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h4>LLMs & RAG</h4>
+            <div class="skill-chips">
+              <span class="chip">Llama</span>
+              <span class="chip">GPT models</span>
+              <span class="chip">RAG systems</span>
+              <span class="chip">Prompt Engineering</span>
+              <span class="chip">LoRA/QLoRA</span>
+              <span class="chip">FAISS</span>
+              <span class="chip">Chroma</span>
+              <span class="chip">Vector DBs</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skill-group">
+            <h4>Data & Engineering</h4>
+            <div class="skill-chips">
+              <span class="chip">Python</span>
+              <span class="chip">SQL</span>
+              <span class="chip">R</span>
+              <span class="chip">ETL</span>
+              <span class="chip">Airflow</span>
+              <span class="chip">Kafka</span>
+              <span class="chip">Docker</span>
+              <span class="chip">AWS (S3, EC2)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h4>Visualization & Web</h4>
+            <div class="skill-chips">
+              <span class="chip">Power BI</span>
+              <span class="chip">Tableau</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Flask</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">Salesforce</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section id="research">
+      <h2 class="section-title"><span>◆</span>Research</h2>
+      <div class="card">
+        <h3>Automatic Segmenting of Brain Tumours within MRI Images</h3>
+        <p class="timeline-meta">ODJ Journal · Volume 29, Issue 06 · June 2023</p>
+        <p>
+          Research on glioma segmentation using deep learning to improve diagnostic accuracy and
+          treatment planning. Proposed a depth normalizing technique to address heterogeneity across
+          MRI acquisition settings and explored compact CNN architectures for precise tumor
+          segmentation.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONNECT / CONTACT -->
+    <section id="contact">
+      <h2 class="section-title"><span>◆</span>Connect with Me</h2>
+      <div class="card">
+        <!-- Your name and short description -->
+        <h3 style="margin-bottom:0.4rem;">Supraja Madala</h3>
+        <p style="font-size:0.9rem; color:#a3a7c0; margin-bottom:0.9rem;">
+          Data Scientist specializing in AI/ML, NLP, and RAG systems.
+          Open to Data Scientist, ML Engineer, and AI research roles.
+          Reach out for opportunities, collaborations, or technical discussions.
+        </p>
+
+        <!-- Contact details clearly listed -->
+        <div class="contact-grid">
+          <div class="contact-item">
+            <span>Name</span>
+            <span>Supraja Madala</span>
+          </div>
+          <div class="contact-item">
+            <span>Email</span>
+            <a href="mailto:Supraja2224@gmail.com">Supraja2224@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span>Location</span>
+            <span>New Haven, CT · Open to relocation/hybrid/remote</span>
+          </div>
+        </div>
+
+        <!-- Quick action buttons -->
+        <div style="margin-top:1rem;">
+          <a class="btn-primary" href="mailto:Supraja2224@gmail.com">Email Me</a>
+          <a class="btn-ghost" href="https://www.linkedin.com/in/suprajamadala" target="_blank">
+            Connect on LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 · Supraja Madala · Data Science Portfolio
+  </footer>
+</body>
+</html>
